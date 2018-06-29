@@ -1,51 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="BPELtaxCalculator"
-             targetNamespace="http://xmlns.oracle.com/OBRProject/OBRProject/BPELtaxCalculator"
-             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="BPELtaxCalculator"
+     targetNamespace="http://xmlns.oracle.com/OBRProject/OBRProject/BPELtaxCalculator"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/OBRProject/OBRProject/BPELtaxCalculator"
+     xmlns:ns1="http://www.excise.go.th"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR"
+     xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR"
+    >
+    <plnk:partnerLinkType name="BPELtaxCalculator">
+        <plnk:role name="BPELtaxCalculatorProvider" portType="client:BPELtaxCalculator"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
              xmlns:client="http://xmlns.oracle.com/OBRProject/OBRProject/BPELtaxCalculator"
-             xmlns:ns1="http://www.excise.go.th"
-             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
-
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	TYPE DEFINITION - List of services participating in this BPEL process
-	The default output of the BPEL designer uses strings as input and 
-	output to the BPEL Process. But you can define or import any XML 
-	Schema type and use them as part of the message types.
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
-	<wsdl:types>
-		<schema xmlns="http://www.w3.org/2001/XMLSchema">
-			<import namespace="http://www.excise.go.th" schemaLocation="../Schemas/taxCalculator.xsd" />
-		</schema>
-	</wsdl:types>
-
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	MESSAGE TYPE DEFINITION - Definition of the message types used as 
-	part of the port type defintions
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
-	<wsdl:message name="BPELtaxCalculatorRequestMessage">
-		<wsdl:part name="payload" element="ns1:InputSchema" />
-	</wsdl:message>
-	<wsdl:message name="BPELtaxCalculatorResponseMessage">
-		<wsdl:part name="payload" element="ns1:OutputSchema" />
-	</wsdl:message>
-
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	PORT TYPE DEFINITION - A port type groups a set of operations into
-	a logical service unit.
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-	<!-- portType implemented by the BPELtaxCalculator BPEL process -->
-	<wsdl:portType name="BPELtaxCalculator">
-		<wsdl:operation name="process">
-			<wsdl:input  message="client:BPELtaxCalculatorRequestMessage" />
-			<wsdl:output message="client:BPELtaxCalculatorResponseMessage"/>
-		</wsdl:operation>
-	</wsdl:portType>
-
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	PARTNER LINK TYPE DEFINITION
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
-	<plnk:partnerLinkType name="BPELtaxCalculator">
-		<plnk:role name="BPELtaxCalculatorProvider" portType="client:BPELtaxCalculator"/>
-	</plnk:partnerLinkType>
+             xmlns:ns1="http://www.excise.go.th" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+             xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR">
+            <import namespace="http://www.excise.go.th" schemaLocation="../Schemas/taxCalculator.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/OBRProject/OBRProject/BPELtaxCalculator"
+             xmlns:ns1="http://www.excise.go.th" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+             xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR">
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" schemaLocation="../Schemas/db_TR_table.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/OBRProject/OBRProject/BPELtaxCalculator"
+             xmlns:ns1="http://www.excise.go.th" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+             xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR">
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR" schemaLocation="../Schemas/db_LR_table.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="BPELtaxCalculatorRequestMessage">
+        <wsdl:part name="payload" element="ns1:InputSchema"/>
+    </wsdl:message>
+    <wsdl:message name="BPELtaxCalculatorResponseMessage">
+        <wsdl:part name="payload" element="ns1:OutputSchema"/>
+    </wsdl:message>
+    <wsdl:portType name="BPELtaxCalculator">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:BPELtaxCalculatorRequestMessage"/>
+            <wsdl:output message="client:BPELtaxCalculatorResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
 </wsdl:definitions>

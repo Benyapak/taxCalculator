@@ -28,7 +28,9 @@
          xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:ns1="http://www.excise.go.th"
          xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
          xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/OBRProject/OBRProject/db_LR"
-         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/OBRProject/OBRProject/db_TR">
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/OBRProject/OBRProject/db_TR"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR"
+         xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR">
     <!-- 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         PARTNERLINKS                                                      
@@ -42,6 +44,10 @@
       List of messages and XML documents used within this BPEL process 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR" location="../Schemas/db_LR_table.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" location="../Schemas/db_TR_table.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
   <partnerLinks>
     <partnerLink name="RestService" partnerLinkType="client:BPELtaxCalculator" myRole="BPELtaxCalculatorProvider"/>
     <partnerLink name="db_LR" partnerLinkType="ns2:db_LR_plt" partnerRole="db_LR_role"/>
@@ -53,6 +59,11 @@
 
     <!-- Reference to the message that will be returned to the requester-->
     <variable name="outputVariable" messageType="client:BPELtaxCalculatorResponseMessage"/>
+    <variable name="inputTR"
+              element="ns4:db_TRSelect_DutyCode_TypeCode_SubtypeCode_SettypeCode_CalDateInputParameters"/>
+    <variable name="outputTR" element="ns4:TimeRateCollection"/>
+    <variable name="inputLR" element="ns5:db_LRSelect_offcode_inccode_CalDateInputParameters"/>
+    <variable name="outputLR" element="ns5:LocalrateCollection"/>
   </variables>
 
   <!-- 
