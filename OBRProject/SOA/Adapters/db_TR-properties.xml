@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-   <entry key="TIME_RATE.UPD_USERID:db_column_type">CHAR</entry>
    <entry key="TIME_RATE:db_column_17">PRICE_MIN</entry>
+   <entry key="TIME_RATE.UPD_USERID:db_column_type">CHAR</entry>
    <entry key="TIME_RATE:db_column_16">SIZE_SUGAR_MIN</entry>
    <entry key="TIME_RATE:db_column_15">SIZE_SUGAR_MAX</entry>
    <entry key="TIME_RATE.RATE_VALUE:db_column_type">NUMBER</entry>
@@ -13,8 +13,8 @@
    <entry key="TIME_RATE:db_column_10">DEGREE_MIN</entry>
    <entry key="TIME_RATE.RATE_WHOLESALE_OVER:db_column_precision">8</entry>
    <entry key="TIME_RATE.SIZE_SUGAR_MIN:db_column_not_null">false</entry>
-   <entry key="TIME_RATE.SIZE_SUGAR_MIN:db_column_scale">2</entry>
    <entry key="TIME_RATE.WHOLESALE_MIN:db_column_not_null">false</entry>
+   <entry key="TIME_RATE.SIZE_SUGAR_MIN:db_column_scale">2</entry>
    <entry key="TIME_RATE.RATE_DEGREE_OVER:db_column_not_null">false</entry>
    <entry key="TIME_RATE.PRICE_MIN:db_column_scale">2</entry>
    <entry key="TIME_RATE.RATE_VALUE:db_column_scale">4</entry>
@@ -22,8 +22,8 @@
    <entry key="TIME_RATE.DUTY_FLAG:db_column_size">1</entry>
    <entry key="TIME_RATE.DUTY_CODE:db_column_size">4</entry>
    <entry key="TIME_RATE.RATE_PER_LITRE:db_column_type">NUMBER</entry>
-   <entry key="TIME_RATE.UPD_DATE:db_column_type">DATE</entry>
    <entry key="TIME_RATE.WHOLESALE_MIN:db_column_precision">8</entry>
+   <entry key="TIME_RATE.UPD_DATE:db_column_type">DATE</entry>
    <entry key="TIME_RATE.BEGIN_DATE:db_column_not_null">true</entry>
    <entry key="TIME_RATE.RATE_PER_LITRE:db_column_scale">4</entry>
    <entry key="TIME_RATE.SUBTYPE_CODE:db_column_size">2</entry>
@@ -41,17 +41,17 @@
    <entry key="TIME_RATE:db_column_1">TYPE_CODE</entry>
    <entry key="TIME_RATE:db_column_0">DUTY_CODE</entry>
    <entry key="TIME_RATE.SIZE_SUGAR_MAX:db_column_scale">2</entry>
-   <entry key="TIME_RATE.DUTY_FLAG:db_column_type">CHAR</entry>
    <entry key="TIME_RATE.PRICE_MAX:db_column_type">NUMBER</entry>
    <entry key="TIME_RATE.DUTY_CODE:db_column_type">CHAR</entry>
+   <entry key="TIME_RATE.DUTY_FLAG:db_column_type">CHAR</entry>
    <entry key="TIME_RATE.SETTYPE_CODE:db_column_not_null">true</entry>
    <entry key="TIME_RATE.PRICE_MAX:db_column_scale">2</entry>
    <entry key="TIME_RATE.RATE_PER_LITRE:db_column_not_null">false</entry>
    <entry key="TIME_RATE.MAXRATE_QUANTITY:db_column_type">NUMBER</entry>
    <entry key="TIME_RATE.RATE_PER_LITRE:db_column_precision">8</entry>
    <entry key="TIME_RATE.SUBTYPE_CODE:db_column_type">CHAR</entry>
-   <entry key="TIME_RATE.SIZE_SUGAR_MIN:db_column_type">NUMBER</entry>
    <entry key="TIME_RATE.SIZE_SUGAR_MAX:db_column_not_null">false</entry>
+   <entry key="TIME_RATE.SIZE_SUGAR_MIN:db_column_type">NUMBER</entry>
    <entry key="TIME_RATE.TYPE_CODE:db_column_not_null">true</entry>
    <entry key="TIME_RATE.TYPE_CODE:db_column_size">2</entry>
    <entry key="TIME_RATE.MAXRATE_VALUE:db_column_not_null">false</entry>
@@ -80,15 +80,15 @@
    <entry key="TIME_RATE.SUBTYPE_CODE:db_column_not_null">true</entry>
    <entry key="root_descriptor_alias">TIME_RATE</entry>
    <entry key="TIME_RATE.RATE_VALUE:db_column_precision">8</entry>
-   <entry key="TIME_RATE.COPY_YEAR:db_column_type">CHAR</entry>
    <entry key="TIME_RATE.DEGREE_MIN:db_column_not_null">false</entry>
+   <entry key="TIME_RATE.COPY_YEAR:db_column_type">CHAR</entry>
    <entry key="TIME_RATE.SIZE_SUGAR_MAX:db_column_precision">10</entry>
    <entry key="TIME_RATE.MAXRATE_VALUE:db_column_precision">8</entry>
    <entry key="TIME_RATE.RATE_PER_LITRE_MAX:db_column_not_null">false</entry>
    <entry key="TIME_RATE.RATE_WHOLESALE_OVER:db_column_scale">4</entry>
    <entry key="TIME_RATE.UPD_USERID:db_column_not_null">false</entry>
-   <entry key="TIME_RATE.MAXRATE_QUANTITY:db_column_precision">8</entry>
    <entry key="TIME_RATE.RATE_QUANTITY:db_column_scale">4</entry>
+   <entry key="TIME_RATE.MAXRATE_QUANTITY:db_column_precision">8</entry>
    <entry key="TIME_RATE.SIZE_SUGAR_MIN:db_column_precision">10</entry>
    <entry key="TIME_RATE.RATE_DEGREE_OVER:db_column_precision">8</entry>
    <entry key="TIME_RATE.END_DATE:db_column_type">DATE</entry>
@@ -98,26 +98,26 @@
    <entry key="TIME_RATE.RATE_PER_LITRE_MAX:db_column_precision">8</entry>
    <entry key="TIME_RATE.PRICE_MAX:db_column_not_null">false</entry>
    <entry key="TIME_RATE:db_column_25">COPY_YEAR</entry>
-   <entry key="TIME_RATE:db_column_24">COPY_NO</entry>
    <entry key="TIME_RATE.UPD_USERID:db_column_size">10</entry>
+   <entry key="TIME_RATE:db_column_24">COPY_NO</entry>
    <entry key="TIME_RATE:db_column_23">UPD_DATE</entry>
    <entry key="TIME_RATE:db_column_22">UPD_USERID</entry>
    <entry key="TIME_RATE:db_column_21">END_DATE</entry>
-   <entry key="TIME_RATE:db_column_20">BEGIN_DATE</entry>
    <entry key="TIME_RATE.RATE_QUANTITY:db_column_not_null">false</entry>
+   <entry key="TIME_RATE:db_column_20">BEGIN_DATE</entry>
    <entry key="TIME_RATE.WHOLESALE_MIN:db_column_type">NUMBER</entry>
    <entry key="TIME_RATE.COPY_YEAR:db_column_not_null">false</entry>
    <entry key="TIME_RATE.MAXRATE_QUANTITY:db_column_not_null">false</entry>
    <entry key="TIME_RATE.PRICE_MIN:db_column_precision">15</entry>
    <entry key="TIME_RATE.RATE_PER_LITRE_MAX:db_column_type">NUMBER</entry>
-   <entry key="TIME_RATE.END_DATE:db_column_not_null">false</entry>
    <entry key="TIME_RATE.DEGREE_MIN:db_column_precision">4</entry>
-   <entry key="TIME_RATE.COPY_NO:db_column_not_null">false</entry>
+   <entry key="TIME_RATE.END_DATE:db_column_not_null">false</entry>
    <entry key="TIME_RATE.RATE_QUANTITY:db_column_type">NUMBER</entry>
+   <entry key="TIME_RATE.COPY_NO:db_column_not_null">false</entry>
    <entry key="TIME_RATE.PRICE_MAX:db_column_precision">15</entry>
-   <entry key="TIME_RATE.QUANTITY:db_column_precision">10</entry>
    <entry key="TIME_RATE.RATE_PER_LITRE_MAX:db_column_scale">4</entry>
-   <entry key="TIME_RATE:db_column_19">DUTY_FLAG</entry>
+   <entry key="TIME_RATE.QUANTITY:db_column_precision">10</entry>
    <entry key="TIME_RATE.SIZE_SUGAR_MAX:db_column_type">NUMBER</entry>
+   <entry key="TIME_RATE:db_column_19">DUTY_FLAG</entry>
    <entry key="TIME_RATE:db_column_18">PRICE_MAX</entry>
 </properties>

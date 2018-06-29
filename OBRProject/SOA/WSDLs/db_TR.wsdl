@@ -17,15 +17,15 @@
         <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" schemaLocation="../Schemas/db_TR_table.xsd" />
       </schema>
     </wsdl:types>
-    <wsdl:message name="selectByPrimaryKey_inputParameters">
-        <wsdl:part name="selectByPrimaryKey_inputParameters" element="top:TimeRatePrimaryKey"/>
+    <wsdl:message name="db_TRSelect_inputParameters">
+        <wsdl:part name="db_TRSelect_inputParameters" element="top:db_TRSelect_DutyCode_TypeCode_SubtypeCode_SettypeCode_CalDateInputParameters"/>
     </wsdl:message>
     <wsdl:message name="TimeRateCollection_msg">
         <wsdl:part name="TimeRateCollection" element="top:TimeRateCollection"/>
     </wsdl:message>
     <wsdl:portType name="db_TR_ptt">
-        <wsdl:operation name="selectByPrimaryKey">
-            <wsdl:input message="tns:selectByPrimaryKey_inputParameters"/>
+        <wsdl:operation name="db_TRSelect">
+            <wsdl:input message="tns:db_TRSelect_inputParameters"/>
             <wsdl:output message="tns:TimeRateCollection_msg"/>
         </wsdl:operation>
     </wsdl:portType>
