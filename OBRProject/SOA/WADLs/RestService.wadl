@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://www.excise.go.th" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="RestService">RestService</doc>
+   <grammars>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/OBRProject/OBRProject/BPELtaxCalculator" xmlns:ns1="http://www.excise.go.th" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+			<import namespace="http://www.excise.go.th" schemaLocation="../Schemas/taxCalculator.xsd"/>
+		</schema>
+   </grammars>
+   <resources>
+      <resource path="/taxCalculator">
+         <method name="POST" soa:wsdlOperation="process">
+            <request>
+               <representation mediaType="application/json" element="cns:InputSchema" xmlns:cns="http://www.excise.go.th"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:OutputSchema" xmlns:cns="http://www.excise.go.th"/>
+            </response>
+         </method>
+      </resource>
+   </resources>
+</application>

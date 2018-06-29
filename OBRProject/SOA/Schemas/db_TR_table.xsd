@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="TimeRateCollection" type="TimeRateCollection"/>
+   <xs:complexType name="TimeRateCollection">
+      <xs:sequence>
+         <xs:element name="TimeRate" type="TimeRate" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="TimeRate">
+      <xs:sequence>
+         <xs:element name="dutyCode" type="string4"/>
+         <xs:element name="typeCode" type="string2"/>
+         <xs:element name="subtypeCode" type="string2"/>
+         <xs:element name="settypeCode" type="string2"/>
+         <xs:element name="rateValue" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="rateQuantity" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="beginDate" type="xs:dateTime"/>
+         <xs:element name="endDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="db_TRSelect_DutyCode_TypeCode_SubtypeCode_SettypeCode_CalDateInputParameters" type="db_TRSelect_DutyCode_TypeCode_SubtypeCode_SettypeCode_CalDate"/>
+   <xs:complexType name="db_TRSelect_DutyCode_TypeCode_SubtypeCode_SettypeCode_CalDate">
+      <xs:sequence>
+         <xs:element name="DutyCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="TypeCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="SubtypeCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="SettypeCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="CalDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="TimeRatePrimaryKey" type="TimeRatePrimaryKey"/>
+   <xs:complexType name="TimeRatePrimaryKey">
+      <xs:sequence>
+         <xs:element name="beginDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="dutyCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="settypeCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="subtypeCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="typeCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string4">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="4"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string2">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="2"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

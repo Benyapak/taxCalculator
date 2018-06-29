@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.excise.go.th" targetNamespace="http://www.excise.go.th" elementFormDefault="qualified">
+   <xsd:element name="InputSchema" type="InputSchemaType"/>
+   <xsd:element name="OutputSchema" type="outputSchemaType"/>
+   <xsd:element name="InputMD" type="inputMD"/>
+   <xsd:complexType name="inputMD">
+      <xsd:sequence>
+         <xsd:element name="ProductCode" type="xsd:string"/>
+         <xsd:element name="Degree" type="xsd:decimal"/>
+         <xsd:element name="Size" type="xsd:decimal"/>
+         <xsd:element name="Quantity" type="xsd:decimal"/>
+         <xsd:element name="RetailNoVAT" type="xsd:decimal"/>
+         <xsd:element name="localRate" type="xsd:decimal"/>
+         <xsd:element name="ValueRate" type="xsd:decimal"/>
+         <xsd:element name="QuantityRate" type="xsd:decimal"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="InputSchemaType">
+      <xsd:sequence>
+         <xsd:element name="ProductInfo" type="ProductInfoSchemaType"/>
+         <xsd:element name="LocalTax" type="LocalTaxSchemaType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ProductInfoSchemaType">
+      <xsd:sequence>
+         <xsd:element name="ProductCode" type="xsd:string"/>
+         <xsd:element name="CalDate" type="xsd:date"/>
+         <xsd:element name="Degree" type="xsd:decimal"/>
+         <xsd:element name="Size" type="xsd:decimal"/>
+         <xsd:element name="Quantity" type="xsd:decimal"/>
+         <xsd:element name="RetailNoVAT" type="xsd:decimal"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="LocalTaxSchemaType">
+      <xsd:sequence>
+         <xsd:element name="OffCode" type="xsd:string"/>
+         <xsd:element name="IncCode" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="outputSchemaType">
+      <xsd:sequence>
+         <xsd:element name="TaxByValue" type="xsd:decimal"/>
+         <xsd:element name="TaxByQuantity" type="xsd:decimal"/>
+         <xsd:element name="ExciseTax" type="xsd:decimal"/>
+         <xsd:element name="localTax" type="xsd:decimal"/>
+          <xsd:element name="ValueRate" nillable="false" type="xsd:decimal"/>
+         <xsd:element name="QuantityRate" nillable="false" type="xsd:decimal"/>
+         <xsd:element name="Message" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

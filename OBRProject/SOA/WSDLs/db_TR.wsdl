@@ -1,0 +1,32 @@
+<wsdl:definitions
+     name="db_TR"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OBRProject/OBRProject/db_TR"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OBRProject/OBRProject/db_TR"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="db_TR_plt" >
+    <plt:role name="db_TR_role" >
+      <plt:portType name="tns:db_TR_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" schemaLocation="../Schemas/db_TR_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="selectByPrimaryKey_inputParameters">
+        <wsdl:part name="selectByPrimaryKey_inputParameters" element="top:TimeRatePrimaryKey"/>
+    </wsdl:message>
+    <wsdl:message name="TimeRateCollection_msg">
+        <wsdl:part name="TimeRateCollection" element="top:TimeRateCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="db_TR_ptt">
+        <wsdl:operation name="selectByPrimaryKey">
+            <wsdl:input message="tns:selectByPrimaryKey_inputParameters"/>
+            <wsdl:output message="tns:TimeRateCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

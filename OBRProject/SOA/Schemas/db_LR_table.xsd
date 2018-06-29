@@ -1,0 +1,31 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="LocalrateCollection" type="LocalrateCollection"/>
+   <xs:complexType name="LocalrateCollection">
+      <xs:sequence>
+         <xs:element name="Localrate" type="Localrate" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="Localrate">
+      <xs:sequence>
+         <xs:element name="offcode" type="string6"/>
+         <xs:element name="incCode" type="string6"/>
+         <xs:element name="locRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="beginDate" type="xs:dateTime"/>
+         <xs:element name="endDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="db_LRSelect_offcode_inccode_CalDateInputParameters" type="db_LRSelect_offcode_inccode_CalDate"/>
+   <xs:complexType name="db_LRSelect_offcode_inccode_CalDate">
+      <xs:sequence>
+         <xs:element name="offcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="inccode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="CalDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string6">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="6"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

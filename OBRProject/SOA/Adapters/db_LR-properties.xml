@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="root_descriptor_alias">LOCALRATE</entry>
+   <entry key="LOCALRATE.LOCEXP_RATE:db_column_type">NUMBER</entry>
+   <entry key="LOCALRATE.REMARK:db_column_size">100</entry>
+   <entry key="LOCALRATE.LOC_RATE:db_column_scale">2</entry>
+   <entry key="LOCALRATE.UPD_DATE:db_column_not_null">false</entry>
+   <entry key="LOCALRATE:db_column_9">REMARK</entry>
+   <entry key="LOCALRATE:db_column_8">UPD_DATE</entry>
+   <entry key="LOCALRATE.OFFCODE:db_column_not_null">true</entry>
+   <entry key="LOCALRATE:db_column_7">UPD_USERED</entry>
+   <entry key="LOCALRATE:db_column_6">END_DATE</entry>
+   <entry key="LOCALRATE.LOCOTH_RATE:db_column_precision">5</entry>
+   <entry key="LOCALRATE:db_column_5">BEGIN_DATE</entry>
+   <entry key="LOCALRATE:db_column_4">LOCEXP_RATE</entry>
+   <entry key="LOCALRATE:db_column_3">LOCOTH_RATE</entry>
+   <entry key="LOCALRATE.LOC_RATE:db_column_not_null">false</entry>
+   <entry key="LOCALRATE:db_column_2">LOC_RATE</entry>
+   <entry key="LOCALRATE:db_column_1">INC_CODE</entry>
+   <entry key="LOCALRATE:db_column_0">OFFCODE</entry>
+   <entry key="LOCALRATE.LOCEXP_RATE:db_column_not_null">false</entry>
+   <entry key="LOCALRATE.REMARK:db_column_not_null">false</entry>
+   <entry key="LOCALRATE.END_DATE:db_column_type">DATE</entry>
+   <entry key="LOCALRATE.UPD_USERED:db_column_type">CHAR</entry>
+   <entry key="LOCALRATE.LOCOTH_RATE:db_column_type">NUMBER</entry>
+   <entry key="LOCALRATE:db_table_type">TABLE</entry>
+   <entry key="LOCALRATE.END_DATE:db_column_not_null">false</entry>
+   <entry key="LOCALRATE.UPD_USERED:db_column_size">10</entry>
+   <entry key="LOCALRATE.UPD_DATE:db_column_type">DATE</entry>
+   <entry key="LOCALRATE.OFFCODE:db_column_type">CHAR</entry>
+   <entry key="LOCALRATE.UPD_USERED:db_column_not_null">false</entry>
+   <entry key="LOCALRATE.LOCEXP_RATE:db_column_precision">5</entry>
+   <entry key="return_single_result_set">false</entry>
+   <entry key="LOCALRATE.LOCOTH_RATE:db_column_not_null">false</entry>
+   <entry key="LOCALRATE.INC_CODE:db_column_type">CHAR</entry>
+   <entry key="LOCALRATE.LOCOTH_RATE:db_column_scale">2</entry>
+   <entry key="LOCALRATE.OFFCODE:db_column_size">6</entry>
+   <entry key="LOCALRATE.BEGIN_DATE:db_column_type">DATE</entry>
+   <entry key="LOCALRATE.LOCEXP_RATE:db_column_scale">2</entry>
+   <entry key="LOCALRATE.BEGIN_DATE:db_column_not_null">true</entry>
+   <entry key="LOCALRATE.INC_CODE:db_column_not_null">true</entry>
+   <entry key="LOCALRATE.INC_CODE:db_column_size">6</entry>
+   <entry key="LOCALRATE.REMARK:db_column_type">VARCHAR2</entry>
+   <entry key="LOCALRATE.LOC_RATE:db_column_type">NUMBER</entry>
+   <entry key="LOCALRATE.LOC_RATE:db_column_precision">5</entry>
+</properties>

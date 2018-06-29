@@ -1,0 +1,14 @@
+<adapter-config name="db_LR" adapter="db" wsdlLocation="../WSDLs/db_LR.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="RDB_TR" location="eis/DB/RDB_TR"/>
+  <endpoint-interaction portType="db_LR_ptt" operation="db_LRSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="db_LR.Localrate"/>
+      <property name="QueryName" value="db_LRSelect"/>
+      <property name="MappingsMetaDataURL" value="db_LR-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>
