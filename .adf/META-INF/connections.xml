@@ -7,17 +7,17 @@
         <Contents>thin</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="hostname">
-        <Contents>192.168.1.11</Contents>
+        <Contents>192.168.1.100</Contents>
       </StringRefAddr>
       <SecureRefAddr addrType="password"/>
       <StringRefAddr addrType="subtype">
         <Contents>oraJDBC</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="port">
-        <Contents>31521</Contents>
+        <Contents>1521</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="serviceName">
-        <Contents>soadb</Contents>
+        <Contents>db11g</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="user">
         <Contents>RDB</Contents>

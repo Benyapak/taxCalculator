@@ -14,63 +14,6 @@
          <querying>
             <queries>
                <query name="db_LRSelect" xsi:type="read-all-query">
-                  <criteria operator="and" xsi:type="logic-expression">
-                     <left operator="and" xsi:type="logic-expression">
-                        <left operator="equal" xsi:type="relation-expression">
-                           <left name="offcode" xsi:type="query-key-expression">
-                              <base xsi:type="base-expression"/>
-                           </left>
-                           <right xsi:type="parameter-expression">
-                              <parameter name="offcode" xsi:type="column"/>
-                           </right>
-                        </left>
-                        <right operator="equal" xsi:type="relation-expression">
-                           <left name="incCode" xsi:type="query-key-expression">
-                              <base xsi:type="base-expression"/>
-                           </left>
-                           <right xsi:type="parameter-expression">
-                              <parameter name="inccode" xsi:type="column"/>
-                           </right>
-                        </right>
-                     </left>
-                     <right operator="or" xsi:type="logic-expression">
-                        <left operator="and" xsi:type="logic-expression">
-                           <left operator="lessThanEqual" xsi:type="relation-expression">
-                              <left name="beginDate" xsi:type="query-key-expression">
-                                 <base xsi:type="base-expression"/>
-                              </left>
-                              <right xsi:type="parameter-expression">
-                                 <parameter name="CalDate" xsi:type="column"/>
-                              </right>
-                           </left>
-                           <right operator="greaterThanEqual" xsi:type="relation-expression">
-                              <left name="endDate" xsi:type="query-key-expression">
-                                 <base xsi:type="base-expression"/>
-                              </left>
-                              <right xsi:type="parameter-expression">
-                                 <parameter name="CalDate" xsi:type="column"/>
-                              </right>
-                           </right>
-                        </left>
-                        <right operator="and" xsi:type="logic-expression">
-                           <left operator="lessThanEqual" xsi:type="relation-expression">
-                              <left name="beginDate" xsi:type="query-key-expression">
-                                 <base xsi:type="base-expression"/>
-                              </left>
-                              <right xsi:type="constant-expression">
-                                 <value></value>
-                              </right>
-                           </left>
-                           <right function="isNull" xsi:type="function-expression">
-                              <arguments>
-                                 <argument name="endDate" xsi:type="query-key-expression">
-                                    <base xsi:type="base-expression"/>
-                                 </argument>
-                              </arguments>
-                           </right>
-                        </right>
-                     </right>
-                  </criteria>
                   <arguments>
                      <argument name="offcode">
                         <type>java.lang.String</type>
@@ -82,6 +25,9 @@
                         <type>java.lang.String</type>
                      </argument>
                   </arguments>
+                  <call xsi:type="sql-call">
+                     <sql>SELECT OFFCODE, INC_CODE, LOC_RATE, BEGIN_DATE, END_DATE FROM LOCALRATE WHERE (((OFFCODE = #offcode) AND (INC_CODE = #inccode)) AND (((BEGIN_DATE &lt;= #CalDate) AND (END_DATE >= #CalDate)) OR ((BEGIN_DATE &lt;=#CalDate) AND (END_DATE IS NULL))))</sql>
+                  </call>
                   <reference-class>db_LR.Localrate</reference-class>
                   <container xsi:type="list-container-policy">
                      <collection-type>java.util.Vector</collection-type>

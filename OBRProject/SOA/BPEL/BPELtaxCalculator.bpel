@@ -45,6 +45,9 @@
       List of messages and XML documents used within this BPEL process 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
+  <import namespace="http://xmlns.oracle.com/OBRProject/OBRProject/BPELtaxCalculator"
+          location="../WSDLs/BPELtaxCalculator.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"
+          ui:processWSDL="true"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_LR" location="../Schemas/db_LR_table.xsd"
           importType="http://www.w3.org/2001/XMLSchema"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/db_TR" location="../Schemas/db_TR_table.xsd"
@@ -81,68 +84,124 @@
              portType="client:BPELtaxCalculator" operation="process"/>
     <if name="If1">
       <condition>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,1,2) &gt; 21 or substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,1,2) = 0</condition>
-      <assign name="Assign1">
-        <copy>
-          <from>"Fail"</from>
-          <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:Message</to>
-        </copy>
-      </assign>
+      <sequence name="Sequence2">
+        <assign name="Assign1">
+          <copy>
+            <from>"Fail"</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:Message</to>
+          </copy>
+        </assign>
+      </sequence>
       <else>
         <sequence name="Sequence1">
-          <assign name="Assign2">
-            <copy>
-              <from>$inputVariable.payload/ns1:ProductInfo/ns1:CalDate</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:CalDate</to>
-            </copy>
-            <copy>
-              <from>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,1,4)</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:DutyCode</to>
-            </copy>
-            <copy>
-              <from>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,5,2)</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:TypeCode</to>
-            </copy>
-            <copy>
-              <from>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,7,2)</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:SubtypeCode</to>
-            </copy>
-            <copy>
-              <from>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,9,2)</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:SettypeCode</to>
-            </copy>
-          </assign>
-          <invoke name="Invoke1" inputVariable="inputTR" outputVariable="outputTR"
-                  partnerLink="db_TR" portType="ns3:db_TR_ptt" operation="db_TRSelect" bpelx:invokeAsDetail="no"/>
-          <assign name="Assign3">
-            <copy>
-              <from>$inputVariable.payload/ns1:LocalTax/ns1:OffCode</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputLR/ns5:offcode</to>
-            </copy>
-            <copy>
-              <from>$inputVariable.payload/ns1:LocalTax/ns1:IncCode</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputLR/ns5:inccode</to>
-            </copy>
-            <copy>
-              <from>$inputVariable.payload/ns1:ProductInfo/ns1:CalDate</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputLR/ns5:CalDate</to>
-            </copy>
-            <copy>
-              <from>$outputTR/ns4:TimeRate/ns4:rateQuantity</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:QuantityRate</to>
-            </copy>
-            <copy>
-              <from>$outputTR/ns4:TimeRate/ns4:rateValue</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:ValueRate</to>
-            </copy>
-          </assign>
-          <invoke name="Invoke2" partnerLink="db_LR" portType="ns2:db_LR_ptt"
-                  operation="db_LRSelect" inputVariable="inputLR" outputVariable="outputLR" bpelx:invokeAsDetail="no"/>
-          <assign name="Assign4">
-            <copy>
-              <from>$outputLR/ns5:Localrate/ns5:locRate</from>
-              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:localTax</to>
-            </copy>
-          </assign>
+          <scope name="Scope2">
+            <faultHandlers>
+              <catchAll>
+                <sequence name="Sequence3">
+                  <assign name="Assign7">
+                    <copy>
+                      <from>"End Time Rate"</from>
+                      <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:Message</to>
+                    </copy>
+                  </assign>
+                  <reply name="Reply1" partnerLink="RestService" variable="outputVariable"
+                         portType="client:BPELtaxCalculator" operation="process"/>
+                </sequence>
+              </catchAll>
+            </faultHandlers>
+            <sequence>
+              <assign name="Assign2">
+                <copy>
+                  <from>$inputVariable.payload/ns1:ProductInfo/ns1:CalDate</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:CalDate</to>
+                </copy>
+                <copy>
+                  <from>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,1,4)</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:DutyCode</to>
+                </copy>
+                <copy>
+                  <from>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,5,2)</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:TypeCode</to>
+                </copy>
+                <copy>
+                  <from>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,7,2)</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:SubtypeCode</to>
+                </copy>
+                <copy>
+                  <from>substring($inputVariable.payload/ns1:ProductInfo/ns1:ProductCode,9,2)</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputTR/ns4:SettypeCode</to>
+                </copy>
+              </assign>
+              <invoke name="Invoke1" inputVariable="inputTR" outputVariable="outputTR" partnerLink="db_TR"
+                      portType="ns3:db_TR_ptt" operation="db_TRSelect" bpelx:invokeAsDetail="no"/>
+              <assign name="Assign3">
+                <copy>
+                  <from>$outputTR/ns4:TimeRate/ns4:rateQuantity</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:QuantityRate</to>
+                </copy>
+                <copy>
+                  <from>$outputTR/ns4:TimeRate/ns4:rateValue</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:ValueRate</to>
+                </copy>
+              </assign>
+            </sequence>
+          </scope>
+          <scope name="Scope1">
+            <faultHandlers>
+              <catchAll>
+                <assign name="Assign5">
+                  <copy>
+                    <from>"TESYYYY"</from>
+                    <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:Message</to>
+                  </copy>
+                </assign>
+              </catchAll>
+            </faultHandlers>
+            <sequence>
+              <assign name="Assign6">
+                <copy>
+                  <from>$inputVariable.payload/ns1:ProductInfo/ns1:CalDate</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputLR/ns5:CalDate</to>
+                </copy>
+                <copy>
+                  <from>$inputVariable.payload/ns1:LocalTax/ns1:OffCode</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputLR/ns5:offcode</to>
+                </copy>
+                <copy>
+                  <from>$inputVariable.payload/ns1:LocalTax/ns1:IncCode</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputLR/ns5:inccode</to>
+                </copy>
+              </assign>
+              <invoke name="Invoke2" partnerLink="db_LR" portType="ns2:db_LR_ptt" operation="db_LRSelect"
+                      inputVariable="inputLR" outputVariable="outputLR" bpelx:invokeAsDetail="no"/>
+              <assign name="Assign4">
+                <copy>
+                  <from>$outputLR/ns5:Localrate/ns5:locRate</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:localTax</to>
+                </copy>
+                <copy>
+                  <from>$outputTR/ns4:TimeRate/ns4:rateValue</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:ValueRate</to>
+                </copy>
+                <copy>
+                  <from>$outputTR/ns4:TimeRate/ns4:rateQuantity</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:QuantityRate</to>
+                </copy>
+                <copy>
+                  <from>$outputTR/ns4:TimeRate/ns4:rateValue</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:TaxByQuantity</to>
+                </copy>
+                <copy>
+                  <from>$outputTR/ns4:TimeRate/ns4:rateQuantity</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:ExciseTax</to>
+                </copy>
+                <copy>
+                  <from>""</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns1:Message</to>
+                </copy>
+              </assign>
+            </sequence>
+          </scope>
         </sequence>
       </else>
     </if>

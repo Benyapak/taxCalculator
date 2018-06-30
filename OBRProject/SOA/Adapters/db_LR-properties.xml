@@ -20,8 +20,8 @@
    <entry key="LOCALRATE:db_column_1">INC_CODE</entry>
    <entry key="LOCALRATE:db_column_0">OFFCODE</entry>
    <entry key="LOCALRATE.LOCEXP_RATE:db_column_not_null">false</entry>
-   <entry key="LOCALRATE.REMARK:db_column_not_null">false</entry>
    <entry key="LOCALRATE.END_DATE:db_column_type">DATE</entry>
+   <entry key="LOCALRATE.REMARK:db_column_not_null">false</entry>
    <entry key="LOCALRATE.UPD_USERED:db_column_type">CHAR</entry>
    <entry key="LOCALRATE.LOCOTH_RATE:db_column_type">NUMBER</entry>
    <entry key="LOCALRATE:db_table_type">TABLE</entry>
